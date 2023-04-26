@@ -12,8 +12,7 @@ RUN apt-get install openssh-server sudo git curl openjdk-18-jre dotnet-sdk-7.0 -
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test
 RUN echo 'test:test' | chpasswd
 RUN dotnet --info
-RUN java --info
-
+RUN java --version
 RUN service ssh start
 
 EXPOSE 22
