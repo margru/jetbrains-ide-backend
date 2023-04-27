@@ -9,8 +9,8 @@ RUN rm packages-microsoft-prod.deb
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get install openssh-server sudo git curl openjdk-18-jre dotnet-sdk-7.0 -y
-RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test
-RUN echo 'test:test' | chpasswd
+RUN useradd -rm -d /home/${USERNAME} -s /bin/bash -g root -G sudo -u 1000 ${USERNAME}
+RUN echo '${USERNAME}:${PASSWORD}' | chpasswd
 RUN dotnet --info
 RUN java --version
 RUN service ssh start
