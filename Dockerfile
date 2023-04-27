@@ -1,8 +1,8 @@
 FROM ubuntu:latest
-ARG username=$USERNAME
-ARG password=$PASSWORD
-RUN useradd -rm -d /home/${username} -s /bin/bash -g root -G sudo -u 1000 ${username}
-RUN echo '${username}:${password}' | chpasswd
+ENV USERNAME=test
+ENV PASSWORD=test
+RUN useradd -rm -d /home/${USERNAME} -s /bin/bash -g root -G sudo -u 1000 ${USERNAME}
+RUN echo '${USERNAME}:${PASSWORD}' | chpasswd
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get install -y wget
