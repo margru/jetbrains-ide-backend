@@ -1,8 +1,4 @@
 FROM ubuntu:latest
-ENV USERNAME=test
-ENV PASSWORD=test
-RUN useradd -rm -d /home/${USERNAME} -s /bin/bash -g root -G sudo -u 1000 ${USERNAME}
-RUN echo "${USERNAME}:${PASSWORD}" | chpasswd
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get install -y wget
@@ -16,7 +12,8 @@ RUN dotnet --info
 RUN java --version
 RUN service ssh start
 RUN ln -sf /dev/stdout /var/log/syslog
-
 EXPOSE 22
-
-CMD ["/usr/sbin/sshd","-D"]
+COPY scripts/runtime.sh .
+RUN chmod a+x runtime.sh
+CMD ["./runtime.sh"]
+#CMD ["./runtime.sh", "/usr/bin/sshd","-D"] 
