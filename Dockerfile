@@ -15,6 +15,7 @@ RUN apt-get install openssh-server sudo git curl openjdk-18-jre dotnet-sdk-7.0 -
 RUN dotnet --info
 RUN java --version
 RUN service ssh start
+RUN ln -sf /dev/stdout /var/log/syslog
 
 EXPOSE 22
 
