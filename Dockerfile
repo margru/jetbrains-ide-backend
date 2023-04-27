@@ -1,5 +1,6 @@
 FROM ubuntu:latest
-
+ENV username=$USERNAME
+ENV password=$PASSWORD
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get install -y wget
@@ -9,8 +10,8 @@ RUN rm packages-microsoft-prod.deb
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get install openssh-server sudo git curl openjdk-18-jre dotnet-sdk-7.0 -y
-RUN useradd -rm -d /home/${USERNAME} -s /bin/bash -g root -G sudo -u 1000 ${USERNAME}
-RUN echo '${USERNAME}:${PASSWORD}' | chpasswd
+RUN useradd -rm -d /home/${username} -s /bin/bash -g root -G sudo -u 1000 ${username}
+RUN echo '${username}:${password}' | chpasswd
 RUN dotnet --info
 RUN java --version
 RUN service ssh start
