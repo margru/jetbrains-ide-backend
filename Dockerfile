@@ -2,7 +2,7 @@ FROM ubuntu:latest
 ENV USERNAME=test
 ENV PASSWORD=test
 RUN useradd -rm -d /home/${USERNAME} -s /bin/bash -g root -G sudo -u 1000 ${USERNAME}
-RUN echo '${USERNAME}:${PASSWORD}' | chpasswd
+RUN echo "${USERNAME}:${PASSWORD}" | chpasswd
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get install -y wget
