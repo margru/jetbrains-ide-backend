@@ -1,1 +1,13 @@
-
+version: '3.8'
+services:
+  gateway:
+    image: laszlo/gateway:latest
+    container_name: gateway
+    ports:
+      - 2222:22
+    volumes:
+      - path/to/your/directory:/home/laszlo
+    environment:
+      - USERNAME=laszlo
+      - PASSWORD=password
+...
