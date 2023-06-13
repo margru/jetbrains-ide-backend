@@ -1,6 +1,6 @@
-# gateway
+# JetBrains IDE backend
 
-
+*Based on https://hub.docker.com/r/laszlo/gateway*
 
 ## Getting started
 
@@ -9,6 +9,11 @@ It delivers a full working sshd-deamon on latest ubuntu.
 Comes with an java-jdk 18 for work with intellij and a dotnet 7.x for work with Rider.
 Currently it works with static username. next versions let you choose a username and password.
 You can mount the home-directory from outside. This ist nice, if you would inject the e.g. .ssh-directory with you ssh-keys (for github / gitlab)).
+
+## Build
+
+`docker build --file ubuntu23.04.dockerfile -t ${DOCKER_USER}/${DOCKER_REPO}:$TAG . --no-cache`
+`docker push ${DOCKER_USER}/${DOCKER_REPO}:$TAG`
 
 
 ## Usage (with docker-compose):
