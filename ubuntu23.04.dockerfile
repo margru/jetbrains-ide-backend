@@ -14,7 +14,7 @@ RUN java --version
 RUN service ssh start
 RUN ln -sf /dev/stdout /var/log/syslog
 EXPOSE 22
+ENV USER_ID=999
 COPY scripts/runtime.sh .
 RUN chmod a+x runtime.sh
 CMD ["./runtime.sh"]
-#CMD ["./runtime.sh", "/usr/bin/sshd","-D"] 

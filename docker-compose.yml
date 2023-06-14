@@ -8,6 +8,7 @@ services:
     volumes:
       - path/to/your/directory:/home/laszlo
     environment:
+      - USER_ID=999
       - USERNAME=laszlo
       - PASSWORD=password
 ...
