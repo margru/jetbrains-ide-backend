@@ -14,20 +14,23 @@ You can mount the home-directory from outside. This ist nice, if you would injec
 
 `docker build --file ubuntu23.04.dockerfile -t ${DOCKER_USER}/${DOCKER_REPO}:$TAG . --no-cache`
 `docker push ${DOCKER_USER}/${DOCKER_REPO}:$TAG`
+`docker run -v /var/run/docker.sock:/var/run/docker.sock ${DOCKER_USER}/${DOCKER_REPO}:$TAG`
 
 
 ## Usage (with docker-compose):
 ```
 version: '3.8'
 services:
-  gateway:
-    image: laszlo/gateway:latest
-    container_name: gateway
+  jetbrains-ide-backend:
+    image: martin.gruber/jetbrains-ide-backend:0.1.0
+    container_name: jetbrains-ide-backend
     ports:
-      - 2222:22
+      - '2222:22'
     restart: unless-stopped
     volumes:
       - path/to/your/directory:/home/laszlo
+      # To be able to run "docker commands in the docker container"
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - USERNAME=laszlo
       - PASSWORD=password
