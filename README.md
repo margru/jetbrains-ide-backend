@@ -25,6 +25,7 @@ services:
     container_name: gateway
     ports:
       - 2222:22
+    restart: unless-stopped
     volumes:
       - path/to/your/directory:/home/laszlo
     environment:
